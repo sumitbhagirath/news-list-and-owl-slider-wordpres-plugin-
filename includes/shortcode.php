@@ -13,7 +13,8 @@ if (!function_exists('nwowls_slider')) {
 			"show_date"             => get_option('nwowls_news_show_date'),
 			"show_category_name"    => get_option('nwowls_news_show_category'),
 			"show_content"          => 'true',
-			"show_full_content"     => 'false',
+			"show_full_content"     => get_option('nwowls_news_show_full_content'),
+			"title_words_limit"     => get_option('nwowls_news_title_word_limit'),
 			"content_words_limit"   => get_option('nwowls_news_content_word_limit'),
 			"order"					=> strtolower(get_option('nwowls_news_order')),
 			"orderby"				=> 'date',
@@ -27,7 +28,8 @@ if (!function_exists('nwowls_slider')) {
 		$showDate 			= ($show_date == '0')? 'false':'true';
 		$showCategory 		= ($show_category_name == '0')?'false': 'true';	
 		$showContent 		= ($show_content == 'false')?'false':'true';
-		$showFullContent   	= ($show_full_content == 'false')?'false':'true';	
+		$showFullContent   	= ($show_full_content == '0')?'false':'true';	
+		$title_words_limit 	= (!empty($title_words_limit))?$title_words_limit:15;
 		$words_limit 		= (!empty($content_words_limit))?$content_words_limit:20;
 		$pagination_type   	= ($pagination_type == 'numeric')?'numeric':'next-prev';	
 		$order 				= (strtolower($order) == 'asc')? 'ASC':'DESC';
@@ -119,9 +121,18 @@ if (!function_exists('nwowls_slider')) {
 										<?php echo ($showCategory == 'true' && $cate_name != '') ? $cate_name : ""?>
 									</div>
 								<?php  } ?>    			
-								<div class="post-content-text">    				
-									<?php the_title( sprintf( '<h3 class="news-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' );	?>    			    
-									<?php if($showCategory == 'true' && $gridcol == '1'){ ?>    				
+								<div class="post-content-text">    
+									<?php 
+										$dots = get_option('nwowls_news_show_dots');
+										$dotsContent = '...';
+										if($dots == '0'){
+											$dotsContent = '';
+										}
+										$title_excerpt = get_the_title();
+										$title_a =  nwowls_content_limit( $post->ID, $title_excerpt, $title_words_limit, $dotsContent); 
+									?>				
+									<h3 class="news-title"><a href="<?php echo esc_url( get_permalink() );?>" rel="bookmark"><?php echo $title_a;?></a></h3>  			    
+									<?php if($showCategory == 'true' && $gridcol == '1'){ ?>
 										<div class="news-cat">                        
 											<?php echo $cate_name; ?>
 										</div>

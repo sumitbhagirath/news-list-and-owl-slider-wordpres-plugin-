@@ -27,6 +27,8 @@ if (!function_exists('nwowls_register_settings')) {
 		register_setting( 'nwowls-settings-group', 'nwowls_news_loop_length');
 		register_setting( 'nwowls-settings-group', 'nwowls_news_show_category');
 		register_setting( 'nwowls-settings-group', 'nwowls_news_show_date');
+		register_setting( 'nwowls-settings-group', 'nwowls_news_title_word_limit');
+		register_setting( 'nwowls-settings-group', 'nwowls_news_show_full_content');
 		register_setting( 'nwowls-settings-group', 'nwowls_news_content_word_limit');
 		register_setting( 'nwowls-settings-group', 'nwowls_news_order');
 		register_setting( 'nwowls-settings-group', 'nwowls_news_read_more_text');
@@ -230,6 +232,36 @@ if (!function_exists('nwowls_settings')) {
 																<label> 
 																	<input type="radio"
 																		name="nwowls_news_show_date" value="0" <?php  if(get_option('nwowls_news_show_date') == 0) echo 'checked="checked"'; ?>/>
+																		<?php esc_html_e("No", 'default'); ?>
+																</label>
+															</td>
+														</tr>
+														<tr valign="top">
+															<th scope="row">
+																<label for="nwowls_news_title_word_limit">
+																	<?php esc_html_e("Title Word Limit", 'nwowls-news'); ?>
+																</label>
+															</th>
+															<td>
+																<input type="number" name="nwowls_news_title_word_limit" id="nwowls_news_title_word_limit"
+																value="<?php form_option('nwowls_news_title_word_limit'); ?>" />
+															</td>
+														</tr>
+														<tr valign="top">
+															<th scope="row">
+																<label for="nwowls_news_show_full_content">
+																	<?php esc_html_e("Show Full Content", 'nwowls-news'); ?>
+																</label>
+															</th>
+															<td>
+																<label> 
+																	<input type="radio"
+																		name="nwowls_news_show_full_content" value="1" <?php  if(get_option('nwowls_news_show_full_content') == 1) echo 'checked="checked"'; ?>/>
+																		<?php esc_html_e("Yes", 'default'); ?>
+																</label> 
+																<label> 
+																	<input type="radio"
+																		name="nwowls_news_show_full_content" value="0" <?php  if(get_option('nwowls_news_show_full_content') == 0) echo 'checked="checked"'; ?>/>
 																		<?php esc_html_e("No", 'default'); ?>
 																</label>
 															</td>

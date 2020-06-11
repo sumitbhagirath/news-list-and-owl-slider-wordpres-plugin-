@@ -19,7 +19,9 @@ if (!function_exists('nwowls_admin_init')) {
 		add_option( 'nwowls_news_show_category','0');
 		add_option( 'nwowls_news_show_date','1');
 		add_option( 'nwowls_news_show_dots','1');
+		add_option( 'nwowls_news_title_word_limit',15);
 		add_option( 'nwowls_news_content_word_limit',150);
+		add_option( 'nwowls_news_show_full_content','0');
 		add_option( 'nwowls_news_order','ASC');
 		add_option( 'nwowls_news_read_more_text','Read More');
 		add_option( 'nwowls_news_grid',1);
