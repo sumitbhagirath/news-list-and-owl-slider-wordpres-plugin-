@@ -1,9 +1,10 @@
-=== Simple News Grid and Slider  ===
-Contributors: sumit-bhagirath
-Tags: sumit-bhagirath, wordpress news plugin, news website, main news page scrolling , wordpress vertical news plugin, Free scrolling news wordpress plugin, Free scrolling news widget wordpress plugin, WordPress set post or page as news, WordPress dynamic news, news, latest news, custom post type, cpt, widget, news shortcode, owl slider
+=== Simple News and Slider  ===
+Contributors: sumitbhagirath
+Tags: sumit-bhagirath, wordpress news plugin, news website, main news page slider , wordpress vertical news plugin, Free slider news wordpress plugin, Free slider news widget wordpress plugin, WordPress set post or page as news, WordPress dynamic news, news, latest news, custom post type, cpt, widget, news shortcode, owl slider, scroller
 Requires at least: 4.0
 Tested up to: 5.4.1
 Stable tag: trunk
+Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,11 +12,9 @@ A quick, easy and simple way to add an News custom post type, vertical scrolling
 
 == Description ==
 
-Dynamic & easy-to-use Simple News List and Slider. 
+Simple News List and Slider for show news archives, news slider and thumbnails.
 
-Website’s performance is the most significant thing for any online business owner. Simple News List and Slider is one of the ways to effectively increase the dynamics of the online web space with news archives, scrolling news widgets and thumbnails. Add, manage and remove the news section on your CMS website.  
-
-**Also work with Gutenberg shortcode block**.
+**Its work with Gutenberg shortcode block also**.
 
 = Important Note For How to Install =
 
@@ -23,7 +22,7 @@ Website’s performance is the most significant thing for any online business ow
 
 **As this pluign is created with custom post type, you can now add Gutenberg  editor support for the plugin for writing the news post. For that we have added apply_filters. For more details please check plugin FAQ section.**
 
-<code>apply_filters( 'news_slider_registered_post_type_args', $news_args ); </code>
+<code>apply_filters( 'nwowls_news_registered_post_type_args', $news_args ); </code>
 
 **Now you can Display news post with the help of short code :** 
 
@@ -39,9 +38,9 @@ Website’s performance is the most significant thing for any online business ow
 
 **Also you can Display the news post with Multiple categories wise** 
 
-<code>Sports news : 
+<code>Demo news : 
 [news_slider category="category_id"]
-Arts news 
+Test news 
 [news_slider category="category_id"]
 </code>
 
@@ -65,9 +64,8 @@ If you are getting any kind of problum with news page means your are not able to
 first select "Default" and save then again select "Custom Structure "  and save. 
 
 = The Plugin Features (latest added) : =
-* Added List view <code>[news_slider grid="list"] </code>
-* Category wise News <code> Sports news [news_slider category="category_id"] </code>
-* Display News with Grid <code>[news_slider]</code>, List <code>[news_slider grid="list"]</code> and Slider <code>[news_slider grid="slider"]</code>
+* Display News with Grid <code>[news_slider]</code> or <code>[news_slider type="list"]</code> and Slider <code>[news_slider type="slider"]</code>
+* Category wise News <code> Sports news [news_slider category="category_id"] </code> 
 
 
 = Privacy & Policy =
@@ -75,7 +73,7 @@ first select "Default" and save then again select "Custom Structure "  and save.
 
 == Installation ==
 
-1. Upload the 'news-slider' folder to the '/wp-content/plugins/' directory.
+1. Upload the 'simple-news-list-and-slider' folder to the '/wp-content/plugins/' directory.
 1. Activate the Simple News List and Slider  plugin through the 'Plugins' menu in WordPress.
 1. Add and manage news items on your site by clicking on the  'News' tab that appears in your admin menu.
 1. Create a page with the any name and paste this short code  <code> [news_slider] </code>.
@@ -91,7 +89,7 @@ function prefix_gutenberg_editor_support($news_args){
  $news_args['show_in_rest'] = false; 
   return $news_args;	
 }
-add_filter( 'news_slider_registered_post_type_args', 'prefix_gutenberg_editor_support' );
+add_filter( 'nwowls_news_registered_post_type_args', 'prefix_gutenberg_editor_support' );
 </code>
 
 = Do I need to update my permalinks after I activate this plugin? =
@@ -108,13 +106,17 @@ Yse  <code> [news_slider] </code>
 
 == Screenshots ==
 
-1. Display News with grid view
-2. A complate view with comments
-3. Display News with List view
-4. Add new news
-5. Single News view
-6. Also work with Gutenberg shortcode block.
+1. Listing all news in admin
+2. Add new news
+3. News and slider settings
+4. Display News with grid view
+5. Display News with List view
 
 == Changelog ==
 = 1.1.0 =
 * Initial release.
+
+== Upgrade Notice ==
+
+= 1.0 =
+Initial release.
